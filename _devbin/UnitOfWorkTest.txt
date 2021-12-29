@@ -1,0 +1,30 @@
+using svietnamAPI.Infras.Data.DatabaseContext;
+using Microsoft.Extensions.Logging;
+using AutoMapper;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using Xunit;
+
+namespace svietnamTEST.RepositoryTests
+{
+    public class UnitOfWorkTest
+    {
+        private bool disposed = false;
+        private readonly AppDbContext _appDbContext;
+        protected readonly IMapper _mapper;
+        protected readonly ILoggerFactory _loggerFactory;
+
+        [Fact]
+        public void LogPrepare()
+        {
+            var hostBuilder = Host.CreateDefaultBuilder().
+                ConfigureLogging((builderContext, loggingBuilder) =>
+                {
+                    loggingBuilder.AddConsole((options) => { });
+                });
+            var host = hostBuilder.Build();
+            var logger = host.Services.GetRequiredService<ILogger<UnitOfWorkTest>>();
+            logger.LogError("aaaa");
+        }
+    }
+}

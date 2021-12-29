@@ -1,0 +1,3 @@
+dotnet add package Moq -v 4.8.3
+
+dotnet add ./svietnamTEST.csproj reference ../svietnamAPI/svietnamAPI.csproj
